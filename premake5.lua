@@ -1,6 +1,7 @@
 project "glfw"
 	kind "StaticLib"
 	language "C"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -31,10 +32,8 @@ project "glfw"
 	}
 
 	filter "system:linux"
-		pic "On"
-
 		systemversion "latest"
-		staticruntime "On"
+		pic "on"
 
 		files
 		{
@@ -57,8 +56,7 @@ project "glfw"
 
 	filter "system:windows"
 		systemversion "latest"
-		staticruntime "On"
-		buildoptions { "/MT" }
+		-- buildoptions { "/MT" }
 
 		files
 		{
